@@ -11,6 +11,7 @@ import { EditableCell } from './EditableCell';
 import { BulkActionToolbar } from './BulkActionToolbar';
 import { MetaEditor } from '../../products/components/MetaEditor';
 import { DescriptionEditor } from '../../products/components/DescriptionEditor';
+import { ImageManagerModal } from '../../products/components/ImageManagerModal';
 import '../Spreadsheet.css';
 
 interface ProductTableProps {
@@ -22,6 +23,19 @@ export const ProductTable: React.FC<ProductTableProps> = ({ data, isLoading }) =
     const [rowSelection, setRowSelection] = useState({});
     const [editingMetaProduct, setEditingMetaProduct] = useState<Product | null>(null);
     const [editingDescProduct, setEditingDescProduct] = useState<Product | null>(null);
+    const [editImages, setEditImages] = useState<{ productId: number; currentImages: { id: number; src: string }[]; isOpen: boolean }>({
+        productId: 0,
+        currentImages: [],
+        isOpen: false
+    });
+
+    const onEditImages = (productId: number, images: { id: number; src: string }[]) => {
+        setEditImages({
+            productId,
+            currentImages: images || [],
+            isOpen: true
+        });
+    };
 
     const columns = React.useMemo<ColumnDef<Product>[]>(
         () => [
@@ -52,15 +66,35 @@ export const ProductTable: React.FC<ProductTableProps> = ({ data, isLoading }) =
             {
                 accessorKey: 'images',
                 header: 'Image',
-                cell: (info) => {
+                cell: info => {
                     const images = info.getValue() as Product['images'];
-                    return images?.[0] ? (
-                        <div className="cell-image">
-                            <img src={images[0].src} alt={images[0].alt || 'Product'} />
+                    const src = images && images.length > 0 ? images[0].src : null;
+                    return (
+                        <div
+                            onClick={() => onEditImages(info.row.original.id, images || [])}
+                            style={{
+                                width: '40px',
+                                height: '40px',
+                                borderRadius: '4px',
+                                overflow: 'hidden',
+                                backgroundColor: '#f0f0f1',
+                                cursor: 'pointer',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center'
+                            }}
+                            title="Click to manage images"
+                        >
+                            {src ? (
+                                <img src={src} alt="Product" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                            ) : (
+                                <span style={{ fontSize: '10px', color: '#888' }}>img</span>
+                            )}
                         </div>
-                    ) : null;
+                    );
                 },
-                size: 80,
+                size: 60,
+                enableSorting: false,
             },
             {
                 accessorKey: 'name',
@@ -118,6 +152,7 @@ export const ProductTable: React.FC<ProductTableProps> = ({ data, isLoading }) =
                     />
                 ),
             },
+
             {
                 accessorKey: 'status',
                 header: 'Status',
@@ -232,6 +267,14 @@ export const ProductTable: React.FC<ProductTableProps> = ({ data, isLoading }) =
                     onClose={() => setEditingDescProduct(null)}
                 />
             )}
-        </div>
+            {editImages.isOpen && (
+                <ImageManagerModal
+                    productId={editImages.productId}
+                    currentImages={editImages.currentImages}
+                    isOpen={editImages.isOpen}
+                    onClose={() => setEditImages({ ...editImages, isOpen: false })}
+                />
+            )}
+        </div >
     );
 };

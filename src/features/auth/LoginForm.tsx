@@ -79,6 +79,17 @@ export const LoginForm: React.FC = () => {
                         {isSubmitting ? <Loader2 className="animate-spin" size={16} /> : 'Connect Store'}
                     </button>
                 </form>
+
+                <div style={{ marginTop: '1.5rem', textAlign: 'center', fontSize: '0.875rem' }}>
+                    <a
+                        href="/wocoommerce-bulk-product-update/docs/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{ color: 'var(--color-primary)', textDecoration: 'none' }}
+                    >
+                        Read the Documentation
+                    </a>
+                </div>
             </div>
         </div>
     );

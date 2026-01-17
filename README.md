@@ -1,6 +1,14 @@
 # WooCommerce Bulk Product Editor
 
+[![Live App](https://img.shields.io/badge/Live-App-blue?style=for-the-badge&logo=react)](https://sahajananddigital.github.io/wocoommerce-bulk-product-update/)
+[![Documentation](https://img.shields.io/badge/Documentation-Read_Docs-green?style=for-the-badge&logo=googledocs)](https://sahajananddigital.github.io/wocoommerce-bulk-product-update/docs/)
+
 A modern, high-performance React application for bulk editing WooCommerce products. Built with **Vite**, **TypeScript**, and **TanStack Table**, designed to mimic the native WordPress Admin interface while providing a spreadsheet-like experience.
+
+## 🔗 Live Links
+
+-   **Application**: [Launch App](https://sahajananddigital.github.io/wocoommerce-bulk-product-update/)
+-   **Documentation**: [View Docs](https://sahajananddigital.github.io/wocoommerce-bulk-product-update/docs/)
 
 ## 🚀 Features
 

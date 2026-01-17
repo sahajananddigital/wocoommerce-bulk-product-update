@@ -39,3 +39,19 @@ Manage custom data for your products:
 2.  Add new Key/Value pairs.
 3.  Update or Delete existing meta fields.
 4.  Click **Save**.
+
+## Image Management
+
+Manage your product images directly from the spreadsheet:
+
+-   **Visual Gallery**: View all your WordPress media in a modal.
+-   **Upload**: Drag and drop support to upload new images.
+-   **Selection**: Easily select and assign images to products.
+
+## Add New Products
+
+Quickly create new products without leaving the bulk editor:
+
+-   **Quick Create**: Click "Add Product" in the toolbar.
+-   **Essential Fields**: Enter Name, Type (Simple/Variable), Price, and SKU.
+-   **Immediate Editing**: The new product appears instantly in the table for further editing.
