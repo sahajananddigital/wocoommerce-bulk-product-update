@@ -9,7 +9,10 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "vitest",
-    "predeploy": "npm run build",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs",
+    "predeploy": "npm run build && npm run docs:build && mkdir -p dist/docs && cp -r docs/.vitepress/dist/* dist/docs/",
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
@@ -43,6 +46,7 @@
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.46.4",
     "vite": "^7.2.4",
+    "vitepress": "^1.6.4",
     "vitest": "^4.0.17"
   }
 }

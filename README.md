@@ -1,73 +1,72 @@
-# React + TypeScript + Vite
+# WooCommerce Bulk Product Editor
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, high-performance React application for bulk editing WooCommerce products. Built with **Vite**, **TypeScript**, and **TanStack Table**, designed to mimic the native WordPress Admin interface while providing a spreadsheet-like experience.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+-   **Native UI**: Designed to look and feel like WordPress Admin (Gutenberg styling).
+-   **Bulk Editing**: Efficiently manage hundreds of products.
+-   **Inline Editing**: Edit Name, SKU, Price, Sale Price, and Stock directly in the table.
+-   **Rich Text Editor**: Integrated **Visual/HTML** editor for Product Descriptions and Short Descriptions.
+-   **Meta Fields**: Manage custom meta keys for products.
+-   **Bulk Actions**: Update status (Publish/Draft) and stock status for multiple items at once.
+-   **Secure**: Client-side authentication using WooCommerce REST API keys (stored locally).
+-   **Safe**: All inputs are sanitized to prevent XSS.
 
-## React Compiler
+## 🛠️ Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+-   **Framework**: React 19, TypeScript, Vite
+-   **State & Data**: TanStack Query (React Query)
+-   **Table Architecture**: TanStack Table
+-   **Styling**: Vanilla CSS with WordPress Admin variables, Tailwind Merge
+-   **Editor**: React Quill New
+-   **HTTP**: Axios
+-   **Testing**: Vitest
 
-## Expanding the ESLint configuration
+## 🏃‍♂️ Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Prerequisites
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+-   Node.js (v18+)
+-   A WooCommerce Store (with REST API enabled)
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Installation
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+1.  Clone the repository:
+    ```bash
+    git clone https://github.com/sahajananddigital/wocoommerce-bulk-product-update.git
+    cd wocoommerce-bulk-product-update
+    ```
+
+2.  Install dependencies:
+    ```bash
+    npm install
+    ```
+
+3.  Start the development server:
+    ```bash
+    npm run dev
+    ```
+
+4.  Open `http://localhost:5173` in your browser.
+
+## 📖 Documentation
+
+Full documentation is available in the [docs](./docs) directory or online at the `/docs` path of the deployed application.
+
+To run the documentation site locally:
+```bash
+npm run docs:dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🚢 Deployment
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+The project is configured for **GitHub Pages**.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+To deploy the application and documentation:
+
+```bash
+npm run deploy
 ```
+
+This command builds the application and the documentation, combines them, and pushes to the `gh-pages` branch.
