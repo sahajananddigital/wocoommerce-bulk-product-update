@@ -71,6 +71,10 @@ export const Dashboard: React.FC = () => {
 
             <div style={{ padding: '1rem' }}>
                 <ProductTable data={data?.products || []} isLoading={isLoading} />
+
+                <div style={{ textAlign: 'center', marginTop: '2rem', color: 'var(--color-text-muted)', fontSize: '0.8rem' }}>
+                    Powered by <a href="https://sahajananddigital.in" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none', fontWeight: 600 }}>Sahajanand Digital</a>
+                </div>
             </div>
 
             <AddProductModal
